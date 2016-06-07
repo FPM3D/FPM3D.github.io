@@ -1,0 +1,36 @@
+body {
+    background:#000;
+    color:#fff;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    font-family:georgia;
+    text-align:center;
+}
+
+#info {
+    position: absolute;
+    top: 0px; width: 100%;
+    padding: 5px;
+    font-family: Monospace;
+    font-size: 13px;
+    text-align: center;
+    z-index:100;
+}
+
+#progress {
+    color: #4DACCE;
+    top: 30%;
+    width: 100%;
+    font-size:3em;
+    font-variant:small-caps;
+    font-weight:bold;
+    position:absolute;
+    z-index:100;
+    text-align: center;
+    text-shadow: #000 0px 0px 10px;
+    display:none;
+}
+
+a { color:red }
+canvas { pointer-events:none; z-index:10; }
