@@ -4,7 +4,7 @@
         <title>three.js webgl - io - scene loader</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
+        <link rel="icon" href="favicon.ico">
         <!-- jQuery -->
 
 
@@ -21,6 +21,16 @@
         <link href="js_css/toolBar/headerWhiteStyle.css" rel="stylesheet" type="text/css"/>
         -->
         <link href="js_css/toolBar/headerDarkStyle.css" rel="stylesheet" type="text/css"/>
+
+        <!-- MODAL WINDOW -->
+        <!--
+        <link rel="stylesheet" href="js_css/modelWindow/modelWindowWhite.css">
+        -->
+        <link rel="stylesheet" href="js_css/modalWindow/modalWindowDark.css">
+        <link rel="stylesheet" href="js_css/modalWindow/modalWindow.css">
+        <link rel="stylesheet" href="js_css/modalWindow/modalWindowStyles.css">
+        <script src="js_css/modalWindow/modalWindow.js"></script>
+
     </head>
 
     <body>
@@ -33,8 +43,8 @@
             <ul> 
                 <li><a class="header-item" href="http://fpm.dnu.dp.ua/">ФПМ</a></li>
                 <li><a class="header-item" href="docs/Diploma_Egoshkin_v0.1.docx">Текст Диплома</a></li>
-                <li><a class="header-item" href="http://www.w3.org/Consortium/siteindex">Параметры</a></li>
-                <li class="last-item"><a class="header-item" href="http://www.w3.org/Consortium/new-to-w3c">О Проекте</a></li>
+                <li><a class="header-item" href = "#" id="Settings">Параметры</a></li>
+                <li class="last-item"><a class="header-item" href="#" id="About">О Проекте</a></li>
             </ul>   
         </div> 
         <div id="progress">
@@ -49,6 +59,40 @@
             </center>
         </div>
 
+        <!-- The Modal Settings -->
+        <div id="MWSettings">
+            <!-- Modal content -->
+            <div id = "MWSettingsContent">
+                <div id = "MWSettingsClose">X</div>
+                <p>Этот пункт находится в разработке :)</p>
+            </div>
+        </div>
+        <script>
+            modalWindowInitFullBG("MWSettings", "MWSettingsContent", "MW-content-fpm3d", "Settings", "MWSettingsClose", "MW-close-btn-fpm3d", 1);
+        </script>
+        <!-- The Modal -->
+        <div id="MWAbout">
+            <!-- Modal content About -->
+            <div id = "MWAboutContent">
+                <div id = "MWAboutClose">X</div>
+                <div style="text-align: left">
+                    <h1>О проекте</h1>
+                    <h3>Дипломная работа</h3>
+                    <div>Студента 4 курса</div>
+                    <div>Егошкина Данилы Игоревича</div>
+                    <div>Руководитель дипломной работы:</div>
+                    <div>Гук Наталия Анатольевна, доктор физико-математических наук, профессор.</div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div>Факультет Прикладной Математики</div>
+                </div>
+            </div>
+        </div>
+        <script>
+            modalWindowInitFullBG("MWAbout", "MWAboutContent", "MW-content-fpm3d", "About", "MWAboutClose", "MW-close-btn-fpm3d", 1);
+        </script>
 
         <script src="js/libs/jquery/jquery.js"></script>
         <script src="js_css/loadingStatusBarCircle/loadingStatusBarCircle.js"></script>
@@ -201,7 +245,7 @@
                 THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
 
                 var loader = new THREE.SceneLoader();
-                
+
                 loader.addGeometryHandler("binary", THREE.BinaryLoader);
                 loader.addGeometryHandler("ctm", THREE.CTMLoader);
                 loader.addGeometryHandler("vtk", THREE.VTKLoader);
@@ -243,7 +287,7 @@
             ///////////// LoadFunction /////////////////////////////////////////////
 
             function createLoadScene() {
-                
+
                 var result = {
                     scene: new THREE.Scene(),
                     camera: new THREE.PerspectiveCamera(80, window.innerWidth / window.innerHeight, 1, 1000)
